@@ -1,8 +1,14 @@
-var app=angular.module('app', []);
-app.controller('calcController',function($scope)
+var app=angular.module('app', ['services']);
+app.controller('calcController',function($scope,timeCapsoleFactory)
 {
+
+    $scope.input1 = new timeCapsoleFactory(0,0,40,4535335);
+
+
+
+    $scope.input1.printResult();
+
     $scope.number=0;
-    console.log('a');
     $scope;
     var time =
     {
