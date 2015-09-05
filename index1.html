@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>time-calculator</title>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" >
-    <link href="css/style.css">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="javascript/app.js"></script>
 </head>
@@ -12,35 +12,34 @@
 <div class="container">
     <table class="calculator">
         <tr>
-
-            <td colspan="5">result</td>
+            <td colspan="5" ><input class="result" type="text" disabled="disabled"></td>
         </tr>
         <tr>
             <td><button class="btn btn-primary calc-btn-number">7</button></td>
             <td><button class="btn btn-primary calc-btn-number">8</button></td>
             <td><button class="btn btn-primary calc-btn-number">9</button></td>
-            <td>Day</td>
-            <td>+</td>
+            <td><button class="btn btn-primary calc-btn-stamp">Day</button></td>
+            <td><button class="btn btn-primary calc-btn-operator">+</button></td>
         </tr>
         <tr>
             <td><button class="btn btn-primary calc-btn-number">4</button></td>
             <td><button class="btn btn-primary calc-btn-number">5</button></td>
             <td><button class="btn btn-primary calc-btn-number">6</button></td>
-            <td>Hour</td>
-            <td>-</td>
+            <td><button class="btn btn-primary calc-btn-stamp">Hour</button></td>
+            <td><button class="btn btn-primary calc-btn-operator">-</button></td>
         </tr>
         <tr>
             <td><button class="btn btn-primary calc-btn-number">1</button></td>
             <td><button class="btn btn-primary calc-btn-number">2</button></td>
             <td><button class="btn btn-primary calc-btn-number">3</button></td>
-            <td>Minute</td>
-            <td rowspan="2">=</td>
+            <td><button class="btn btn-primary calc-btn-stamp">Second</button></td>
+            <td rowspan="2"><button class="btn btn-primary calc-btn-operator double-height">=</button></td>
         </tr>
         <tr>
             <td colspan="2"><button class="btn btn-primary calc-btn-number" >0</button></td>
             <td><button class="btn btn-primary calc-btn-number">.</button></td>
 
-            <td>Second</td>
+            <td><button class="btn btn-primary calc-btn-stamp">Minute</button></td>
         </tr>
     </table>
 
