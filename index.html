@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" ng-app="app">
+ <head>
     <meta charset="UTF-8">
     <title>time-calculator</title>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -9,34 +9,34 @@
     <script type="text/javascript" src="javascript/app.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container" ng-controller="calcController">
     <table class="calculator">
         <tr>
-            <td colspan="5" ><input class="result" type="text" disabled="disabled"></td>
+            <td colspan="5" ><input class="result" type="text"  value="{{number}}" disabled="disabled"></td>
         </tr>
         <tr>
-            <td><button class="btn btn-primary calc-btn-number">7</button></td>
-            <td><button class="btn btn-primary calc-btn-number">8</button></td>
-            <td><button class="btn btn-primary calc-btn-number">9</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(7)" value="7" >7</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(8)" value="8" >8</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(9)" value="9" >9</button></td>
             <td><button class="btn btn-primary calc-btn-stamp">Day</button></td>
             <td><button class="btn btn-primary calc-btn-operator">+</button></td>
         </tr>
         <tr>
-            <td><button class="btn btn-primary calc-btn-number">4</button></td>
-            <td><button class="btn btn-primary calc-btn-number">5</button></td>
-            <td><button class="btn btn-primary calc-btn-number">6</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(4)" value="4" >4</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(5)" value="5" >5</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(6)" value="6" >6</button></td>
             <td><button class="btn btn-primary calc-btn-stamp">Hour</button></td>
             <td><button class="btn btn-primary calc-btn-operator">-</button></td>
         </tr>
         <tr>
-            <td><button class="btn btn-primary calc-btn-number">1</button></td>
-            <td><button class="btn btn-primary calc-btn-number">2</button></td>
-            <td><button class="btn btn-primary calc-btn-number">3</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(1)" value="1" >1</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(2)" value="2" >2</button></td>
+            <td><button class="btn btn-primary calc-btn-number" ng-click="num_button(3)" value="3" >3</button></td>
             <td><button class="btn btn-primary calc-btn-stamp">Second</button></td>
             <td rowspan="2"><button class="btn btn-primary calc-btn-operator double-height">=</button></td>
         </tr>
         <tr>
-            <td colspan="2"><button class="btn btn-primary calc-btn-number" >0</button></td>
+            <td colspan="2"><button class="btn btn-primary calc-btn-number" ng-click="num_button(0)" value="0" >0</button></td>
             <td><button class="btn btn-primary calc-btn-number">.</button></td>
 
             <td><button class="btn btn-primary calc-btn-stamp">Minute</button></td>
