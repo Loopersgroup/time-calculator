@@ -1,0 +1,23 @@
+{
+  "name": "time-calculator",
+  "version": "0.0.1",
+  "description": "A simple time calculator with angular js under *MIT licence*",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Loopersgroup/time-calculator.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Loopersgroup/time-calculator/issues"
+  },
+  "homepage": "https://github.com/Loopersgroup/time-calculator#readme"
+}

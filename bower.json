@@ -1,0 +1,19 @@
+{
+  "name": "-",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Loopersgroup/time-calculator",
+  "authors": [
+    "hokafi <h.kafi.123@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.4.5"
+  }
+}
