@@ -10,31 +10,7 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
 
     $scope.number=0;
     $scope;
-    var time =
-    {
-        day : 0 ,
-        hour : 0 ,
-        min : 0 ,
-        sec : 0 ,
-        con : function($t,$num){
-           if(t=='d')
-                day=num;
-            else if(t=='m')
-                min=num;
 
-        }
-    };
-    function time2($t,$num)
-    {
-        if($t=='d')
-            this.day=$num;
-        else if($t=='m')
-            this.min=$num;
-        else if($t=='h')
-            this.hour=$num;
-        else if($t=='s')
-            this.sec=$num;
-    }
     $scope.num_button= function($val){
         console.log($val);
         $scope.number *=10;
@@ -42,9 +18,12 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
     }
     $scope.time_button = function($time,$num)
     {
-        var ob= time2($time,$num);
+        var ob=new timeCapsoleFactory()
         $scope.a=ob.day;
         console.log(a);
     }
+    $scope.op_button = function($time)
+    {
 
+    }
 });
