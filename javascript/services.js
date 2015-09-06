@@ -23,7 +23,7 @@ services.factory('timeCapsoleFactory',function()
 
         output.printResult = function()
         {
-            console.log(output.capsole);
+            console.log();
         };
 
 
