@@ -120,8 +120,22 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
         $scope.num.capsole.second = 0;
         $scope.calculate();
         console.log($scope.res.capsole.day + ':' + $scope.res.capsole.hour + ':' + $scope.res.capsole.minute + ':' + $scope.res.capsole.second + ':' );
-
-        $scope.number=  $scope.res.capsole.day + " Days "  +" , " +$scope.res.capsole.hour +"  "+ "Hours " +" , " + $scope.res.capsole.minute  +"  "+ "Minutes " +" , " +$scope.res.capsole.second  +"  "+ "Seconds " ;
+        if($scope.res.capsole.day == 1)
+            $scope.number= $scope.res.capsole.day + " Day ";
+        else
+            $scope.number= $scope.res.capsole.day + " Days ";
+        if($scope.res.capsole.hour == 1)
+            $scope.number += " , " +$scope.res.capsole.hour +"  "+ "Hour ";
+        else
+            $scope.number += " , " +$scope.res.capsole.hour +"  "+ "Hours ";
+        if($scope.res.capsole.minute == 1)
+            $scope.number += " , " + $scope.res.capsole.minute  +"  "+ "Minute ";
+        else
+            $scope.number += " , " + $scope.res.capsole.minute  +"  "+ "Minutes ";
+        if($scope.res.capsole.second == 1)
+            $scope.number += " , " +$scope.res.capsole.second  +"  "+ "Second " ;
+        else
+            $scope.number += " , " +$scope.res.capsole.second  +"  "+ "Second " ;
         $scope.flag=0;
     };
 
@@ -133,6 +147,37 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
     };
 
     $scope.calculate=function() {
+        if($scope.res.capsole.second <0)
+        {
+            $scope.m=$scope.res.capsole.second;
+            $scope.res.capsole.second=60+$scope.res.capsole.second%60;
+            $scope.res.capsole.minute += ( $scope.m-($scope.m)%60) / 60;
+            if($scope.m % 60 !=0)
+            {
+                $scope.res.capsole.minute -=1;
+            }
+        }
+        if($scope.res.capsole.minute <0)
+        {
+            $scope.m=$scope.res.capsole.minute;
+            $scope.res.capsole.minute=60+(($scope.res.capsole.minute)%60);
+            $scope.res.capsole.hour += ( $scope.m-($scope.m)%60) / 60;
+            if($scope.m % 60 !=0)
+            {
+                $scope.res.capsole.hour -=1;
+            }
+        }
+        if($scope.res.capsole.hour <0)
+        {
+            $scope.m=$scope.res.capsole.hour;
+            $scope.res.capsole.hour=24+$scope.res.capsole.hour%24;
+            $scope.res.capsole.day += ( $scope.m-($scope.m)%24) / 24;
+            if($scope.m % 24 !=0)
+            {
+                $scope.res.capsole.day -=1;
+            }
+        }
+
         if ($scope.res.capsole.day >=0){
             $scope.res.capsole.hour+=((($scope.res.capsole.day)%1)*24);
             $scope.res.capsole.day-=(($scope.res.capsole.day)%1);
@@ -146,7 +191,6 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
             $scope.res.capsole.minute-=(($scope.res.capsole.minute)%1);
         }
         if ($scope.res.capsole.second >=0){
-            //$scope.res.capsole.hour+=(($scope.res.capsole.day)%1)*24;
             $scope.res.capsole.second-=(($scope.res.capsole.second)%1);
         }
 
