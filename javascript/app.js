@@ -13,7 +13,7 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
     $scope.number='';
     $scope.pre_operator='';
     $scope.flag=1;
-    $scope.s=1;
+    $scope.dot_flag=1;
     $scope.k=0;
     $scope.num_button= function($val){
         if($scope.flag == 0) {
@@ -240,23 +240,25 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
     }
     $scope.dot = function ($val)
     {
-        if($scope.flag == 0)
-            $scope.number='';
-        else if($scope.flag==2)
-        {
-            console.log('hello');
-            $scope.number='';
-            $scope.res.capsole.day = 0;
-            $scope.res.capsole.hour = 0;
-            $scope.res.capsole.minute = 0;
-            $scope.res.capsole.second = 0;
-            $scope.num.capsole.day = 0;
-            $scope.num.capsole.hour = 0;
-            $scope.num.capsole.minute = 0;
-            $scope.num.capsole.second = 0;
-            console.log($scope.res.capsole.day + ':' + $scope.res.capsole.hour + ':' + $scope.res.capsole.minute + ':' + $scope.res.capsole.second + ':');
+        if($scope.dot_flag==1) {
+            if ($scope.flag == 0)
+                $scope.number = '';
+            else if ($scope.flag == 2) {
+                console.log('hello');
+                $scope.number = '';
+                $scope.res.capsole.day = 0;
+                $scope.res.capsole.hour = 0;
+                $scope.res.capsole.minute = 0;
+                $scope.res.capsole.second = 0;
+                $scope.num.capsole.day = 0;
+                $scope.num.capsole.hour = 0;
+                $scope.num.capsole.minute = 0;
+                $scope.num.capsole.second = 0;
+                console.log($scope.res.capsole.day + ':' + $scope.res.capsole.hour + ':' + $scope.res.capsole.minute + ':' + $scope.res.capsole.second + ':');
+            }
+            $scope.number += $val;
+            $scope.dot_flag=0;
         }
-        $scope.number += $val;
     }
 
 
