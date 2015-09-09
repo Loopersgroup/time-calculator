@@ -12,7 +12,7 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
     $scope.input1.printResult();
     $scope.number='';
     $scope.pre_operator='';
-    $scope.flag=1;
+    $scope.flag=0;
     $scope.dot_flag=1;
     $scope.k=0;
     $scope.num_button= function($val){
@@ -34,20 +34,61 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
             $scope.num.capsole.second = 0;
             console.log($scope.res.capsole.day + ':' + $scope.res.capsole.hour + ':' + $scope.res.capsole.minute + ':' + $scope.res.capsole.second + ':');
         }
+        else if($scope.flag==3)
+        {
+
+
+        }
+
+        else if($scope.flag==4){
+            $scope.number='';
+            $scope.num.capsole.day = 0;
+            $scope.num.capsole.hour = 0;
+            $scope.num.capsole.minute = 0;
+            $scope.num.capsole.second = 0;
+        }
         $scope.number += $val;
         $scope.flag = 1;
     };
 
     $scope.op_button = function($time)
     {
-        if($scope.sign == 0) {
+        $scope.dot_flag=1;
+        if($scope.flag==3){
+            if($scope.pre_st=='d'){
+                $scope.num.capsole.day=0;
+                $scope.flag=1;
+                $scope.op_button($time);
+                console.log($scope.number);
+                console.log($scope.num.capsole.day);
+
+            }   if($scope.pre_st=='h'){
+                $scope.num.capsole.hour=0;
+                $scope.flag=1;
+                $scope.op_button($time);
+
+            }   if($scope.pre_st=='m'){
+                $scope.num.capsole.minute=0;
+                $scope.flag=1;
+                $scope.op_button($time);
+
+            }   if($scope.pre_st=='s'){
+                $scope.num.capsole.second=0;
+                $scope.flag=1;
+                $scope.op_button($time);
+
+            }
+
+        }
+        if($scope.flag == 1 || $scope.flag==5) {
             $scope.number = parseFloat($scope.number);
             console.log("f : " +$scope.number);
-
+            $scope.pre_st=$time;
             if ($time == 'd') {
                 $scope.num.capsole.day = $scope.number;
                 console.log('day :' + $scope.num.capsole.day);
                 $scope.number=$scope.num.capsole.day + " Days ";
+                //$scope.pre_st='d';
                 //$scope.number = '';
             }
             else if ($time == 'h') {
@@ -71,14 +112,19 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
             }
 
         }
-        $scope.sign=1;
+        else if($scope.flag==4)
+        {
+            $scope.number='0';
+            console.log($scope.number);
+        }
+        $scope.flag=3;
     }
 
 
 
     $scope.operator = function($op)
     {
-        if($scope.sign == 1) {
+        if( $scope.flag==3) {
             $scope.equal();
             $scope.pre_operator = $op;
             console.log($scope.res.capsole.day + ':' + $scope.res.capsole.hour + ':' + $scope.res.capsole.minute + ':' + $scope.res.capsole.second + ':' + $op);
@@ -88,7 +134,13 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
             $scope.num.capsole.second = 0;
             $scope.sign=0;
         }
-    }
+        else if($scope.flag==4)
+        {
+            $scope.pre_operator = $op;
+        }
+
+        $scope.flag=4;
+    };
     $scope.equal = function()
     {
 
@@ -136,7 +188,7 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
             $scope.number += " , " +$scope.res.capsole.second  +"  "+ "Second " ;
         else
             $scope.number += " , " +$scope.res.capsole.second  +"  "+ "Second " ;
-        $scope.flag=0;
+       // $scope.flag=0;
     };
 
     $scope.equalButton = function()
@@ -241,11 +293,18 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
     $scope.dot = function ($val)
     {
         if($scope.dot_flag==1) {
-            if ($scope.flag == 0)
-                $scope.number = '';
+            if ($scope.flag == 0) {
+                $scope.number = "0";
+                $scope.number += $val;
+            }
+            else if($scope.flag==1)
+            {
+                $scope.number += $val;
+            }
             else if ($scope.flag == 2) {
                 console.log('hello');
-                $scope.number = '';
+                $scope.number = '0';
+                $scope.number += $val;
                 $scope.res.capsole.day = 0;
                 $scope.res.capsole.hour = 0;
                 $scope.res.capsole.minute = 0;
@@ -256,8 +315,16 @@ app.controller('calcController',function($scope,timeCapsoleFactory)
                 $scope.num.capsole.second = 0;
                 console.log($scope.res.capsole.day + ':' + $scope.res.capsole.hour + ':' + $scope.res.capsole.minute + ':' + $scope.res.capsole.second + ':');
             }
-            $scope.number += $val;
+            else if($scope.flag==3)
+            {
+
+            }
+            else if($scope.flag==4)
+            {
+                $scope.number="0.";
+            }
             $scope.dot_flag=0;
+            $scope.flag=5;
         }
     }
 
